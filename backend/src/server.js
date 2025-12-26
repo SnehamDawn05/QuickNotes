@@ -9,7 +9,7 @@ dotenv.config();
 const app= express();
 const PORT=process.env.PORT;
 
-connectDB();
+
 
 //middleware
 app.use(express.json()) //this middleware will parse the json(req.body)
@@ -17,6 +17,9 @@ app.use(rateLimitter)
 
 app.use("/api/notes", noteRoutes);
 
-app.listen(PORT,()=>{
-    console.log("Server running on port ",PORT);
-});
+connectDB().then(()=>{
+    app.listen(PORT,()=>{
+        console.log("Server running on port ",PORT);
+    });
+})
+
