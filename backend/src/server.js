@@ -12,7 +12,7 @@ const PORT=process.env.PORT;
 
 
 //middleware
-app.use(express.json()) //this middleware will parse the json(req.body)...
+app.use(express.json()) //this middleware will parse the json(req.body)
 app.use(rateLimitter)
 
 app.use("/api/notes", noteRoutes);
